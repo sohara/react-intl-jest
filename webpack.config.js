@@ -32,7 +32,13 @@ module.exports = {
           getCustomTransformers: () => {
             console.log("getting getCustomTransformers");
             return {
-              before: [transform()],
+              before: [
+                transform({
+                  overrideIdFn: "[sha512:contenthash:base64:6]",
+                  extractFromFormatMessageCall: true,
+                  ast: true,
+                }),
+              ],
             };
           },
         },
